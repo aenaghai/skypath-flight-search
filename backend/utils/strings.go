@@ -5,7 +5,6 @@ import "strings"
 func UpperCompact(s string) string {
 	s = strings.TrimSpace(s)
 	s = strings.ToUpper(s)
-	// remove internal whitespace too (your previous behavior)
 	out := make([]rune, 0, len(s))
 	for _, ch := range s {
 		if ch != ' ' && ch != '\t' && ch != '\n' && ch != '\r' {

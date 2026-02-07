@@ -7,6 +7,8 @@ services:
     environment:
       - PORT=8080
       - FLIGHTS_DATA_PATH=/app/data/flights.json
+    volumes:
+      - ./flights.json:/app/data/flights.json:ro
 
   frontend:
     build:

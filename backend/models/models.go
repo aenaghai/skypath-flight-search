@@ -1,4 +1,4 @@
-package main
+package models
 
 import (
 	"encoding/json"
@@ -50,4 +50,35 @@ func (p *Price) UnmarshalJSON(b []byte) error {
 	}
 
 	return fmt.Errorf("invalid price: %s", string(b))
+}
+
+// API output models
+type SegmentOut struct {
+	FlightNumber   string  `json:"flightNumber"`
+	Airline        string  `json:"airline"`
+	Origin         string  `json:"origin"`
+	Destination    string  `json:"destination"`
+	DepartureLocal string  `json:"departureLocal"`
+	ArrivalLocal   string  `json:"arrivalLocal"`
+	Price          float64 `json:"price"`
+	Aircraft       string  `json:"aircraft"`
+}
+
+type ItineraryOut struct {
+	Segments             []SegmentOut `json:"segments"`
+	LayoversMinutes      []int        `json:"layoversMinutes"`
+	TotalDurationMinutes int          `json:"totalDurationMinutes"`
+	TotalPrice           float64      `json:"totalPrice"`
+}
+
+type SearchResponse struct {
+	Origin      string         `json:"origin"`
+	Destination string         `json:"destination"`
+	Date        string         `json:"date"`
+	Count       int            `json:"count"`
+	Itineraries []ItineraryOut `json:"itineraries"`
+}
+
+type SearchError struct {
+	Message string `json:"message"`
 }

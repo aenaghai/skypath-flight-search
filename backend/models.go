@@ -20,7 +20,7 @@ type Airport struct {
 }
 
 type Flight struct {
-	FlightNumber  string `json:"flight_number"`
+	FlightNumber  string `json:"flightNumber"`
 	Airline       string `json:"airline"`
 	Origin        string `json:"origin"`
 	Destination   string `json:"destination"`
